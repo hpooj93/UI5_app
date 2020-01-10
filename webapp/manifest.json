@@ -1,7 +1,7 @@
 {
 	"_version": "1.12.0",
 	"sap.app": {
-		"id": "Ui5_application.Ui5_app",
+		"id": "UI5_app_for_Qunit_testing.UI5_app",
 		"type": "application",
 		"i18n": "i18n/i18n.properties",
 		"applicationVersion": {
@@ -14,18 +14,11 @@
 			"version": "0.0.0"
 		},
 		"dataSources": {
-			"ZFCAT_LOGS_SRV": {
-				"uri": "/sap/opu/odata/sap/ZFCAT_LOGS_SRV/",
+			"northwind.svc": {
+				"uri": "/Northwind/V2/northwind/northwind.svc/",
 				"type": "OData",
 				"settings": {
 					"localUri": "localService/metadata.xml"
-				}
-			},
-			"ZODATA_EMP_SRV": {
-				"uri": "/sap/opu/odata/sap/ZODATA_EMP_SRV/",
-				"type": "OData",
-				"settings": {
-					"localUri": "localService/ZODATA_EMP_SRV/metadata.xml"
 				}
 			}
 		}
@@ -49,18 +42,17 @@
 	"sap.ui5": {
 		"flexEnabled": false,
 		"rootView": {
-			"viewName": "Ui5_application.Ui5_app.view.View1",
+			"viewName": "Sample_UI5App_for_Qunit_testing.Sample_UI5App.view.App",
 			"type": "XML",
 			"async": true,
-			"id": "View1"
+			"id": "App"
 		},
 		"dependencies": {
-			"minUI5Version": "1.60.1",
+			"minUI5Version": "1.65.6",
 			"libs": {
 				"sap.ui.layout": {},
 				"sap.ui.core": {},
-				"sap.m": {},
-				"sap.ui.table": {}
+				"sap.m": {}
 			}
 		},
 		"contentDensities": {
@@ -71,7 +63,7 @@
 			"i18n": {
 				"type": "sap.ui.model.resource.ResourceModel",
 				"settings": {
-					"bundleName": "Ui5_application.Ui5_app.i18n.i18n"
+					"bundleName": "UI5_app_for_Qunit_testing.UI5_app.i18n.i18n"
 				}
 			},
 			"": {
@@ -81,43 +73,54 @@
 					"defaultBindingMode": "OneWay",
 					"defaultCountMode": "Request"
 				},
-				"dataSource": "ZODATA_EMP_SRV",
+				"dataSource": "northwind.svc",
 				"preload": true
 			}
 		},
 		"resources": {
-			"css": [
-				{
-					"uri": "css/style.css"
-				}
-			]
+			"css": [{
+				"uri": "css/style.css"
+			}]
 		},
 		"routing": {
 			"config": {
 				"routerClass": "sap.m.routing.Router",
 				"viewType": "XML",
 				"async": true,
-				"viewPath": "Ui5_application.Ui5_app.view",
+				"viewPath": "UI5_app_for_Qunit_testing.UI5_app.view",
 				"controlAggregation": "pages",
 				"controlId": "app",
-				"clearControlAggregation": false
+				"clearControlAggregation": false,
+				"viewLevel": 1
 			},
-			"routes": [
-				{
-					"name": "RouteView1",
-					"pattern": "RouteView1",
-					"target": [
-						"TargetView1"
-					]
-				}
-			],
+			"routes": [{
+				"name": "",
+				"pattern": "",
+				"target": ["TargetView1"]
+			}, {
+				"name": "Detail",
+				"pattern": "detail/{productId}",
+				"titleTarget": "",
+				"greedy": false,
+				"target": ["Detail"]
+			}],
 			"targets": {
 				"TargetView1": {
 					"viewType": "XML",
 					"transition": "slide",
 					"clearControlAggregation": false,
 					"viewId": "View1",
-					"viewName": "View1"
+					"viewName": "View1",
+					"viewLevel": 1
+				},
+				"App": {
+					"viewType": "XML",
+					"viewName": "App"
+				},
+				"Detail": {
+					"viewType": "XML",
+					"viewName": "Detail",
+					"viewLevel": 2
 				}
 			}
 		}
