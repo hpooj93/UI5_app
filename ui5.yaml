@@ -1,6 +1,6 @@
 specVersion: '1.0'
 metadata:
-  name: Ui5_app
+  name: UI5_app
 type: application
 builder:
   customTasks:
@@ -20,8 +20,8 @@ builder:
       configuration:
         destDir: dist
         appFolder: webapp
-        nameSpace: Ui5_application 
+        nameSpace: UI5_application 
     - name: webide-extension-task-resources
       afterTask: webide-extension-task-lint
       configuration:
-        nameSpace: Ui5_application
+        nameSpace: UI5_application
