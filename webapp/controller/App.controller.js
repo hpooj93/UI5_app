@@ -3,9 +3,7 @@ sap.ui.define([
 ], function (Controller) {
 	"use strict";
 
-	return Controller.extend("UI5_app
-_for_Qunit_testing.UI5_app
-.controller.App", {
+	return Controller.extend("UI5_app_for_Qunit_testing.UI5_app.controller.App", {
 
 		/**
 		 * Called when a controller is instantiated and its View controls (if available) are already created.
